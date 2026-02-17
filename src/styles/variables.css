@@ -1,0 +1,23 @@
+:root {
+  --text-black: #1a1a1a;
+  --text-white: #ffffff;
+
+  --red: #ff0000;
+  --red-hover: #cc0000;
+
+  --bg-dark: #1e1e1e;
+  --bg-gray: #f3f3f7;
+  --bg-white: #ffffff;
+
+  --border: 1px solid #1e1e1e;
+  --border-white: 1px solid #d9d9d9;
+  --border-red: 1px solid var(--red);
+  --border-button: 20px;
+  --border-radius: 8px;
+  --border-radius-input: 4px;
+
+  --box-shadow:
+    0 4px 4px -4px rgba(12, 12, 13, 0.05),
+    0 16px 32px -4px rgba(12, 12, 13, 0.1);
+  --shadow-hover: ;
+}
