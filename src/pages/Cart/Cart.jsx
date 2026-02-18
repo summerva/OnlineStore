@@ -3,7 +3,9 @@ import './Cart.css'
 
 const Cart = () => {
     return (
-        <h1>Корзина</h1>
+        <div className="cart container">
+            
+        </div>
     )
 }
 export default Cart

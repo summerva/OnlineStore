@@ -1,5 +1,5 @@
 import './ProductCard.css'
-import Header from "../../components/Header/Header"
+import Header from "../Header/Header"
 
 const ProductCard = () => {
     return (

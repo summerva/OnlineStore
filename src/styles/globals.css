@@ -4,12 +4,19 @@ body {
   color: var(--text-black);
   font-family: "Inter", sans-serif;
   background: var(--bg-gray);
+  height: 100%;
 }
 
 input,
 label,
 button {
   transition-duration: 0.2s;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .container {

@@ -1,0 +1,15 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px 100px;
+  background: var(--bg-dark);
+  color: var(--text-white);
+  margin-top: auto;
+}
+
+.footer__nav {
+  display: flex;
+  gap: 15px;
+}
