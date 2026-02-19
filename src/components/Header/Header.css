@@ -11,38 +11,12 @@
 .header h1 {
   margin: 0;
   color: var(--red);
+  font-family: "Space Grotesk", sans-serif;
 }
 
 .header__search {
   display: flex;
   gap: 10px;
-}
-
-.search input {
-  padding: 5px 10px;
-  border: var(--border-white);
-  border-radius: var(--border-radius);
-  width: 100%;
-
-  &:hover,
-  &:focus {
-    border: var(--border-red);
-    /* background: var(--bg-gray); */
-  }
-}
-
-.button {
-  background: var(--red);
-  color: var(--text-white);
-  padding: 0px 24px;
-  border-radius: var(--border-radius);
-  border: var(--border-red);
-  font-weight: 600;
-
-  &:hover {
-    transition-duration: 0.1s;
-    background: var(--red-hover);
-  }
 }
 
 .header__nav {
@@ -65,7 +39,7 @@
 .badge {
   position: absolute;
   top: -8px;
-  right: -12px;
+  right: -1px;
   background: var(--red);
   color: white;
   border-radius: 50%;
@@ -75,4 +49,28 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.header__burger {
+  display: none;
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  background: var(--bg-white);
+  padding: 20px;
+  border-bottom: var(--border-red);
+  border-top: var(--border-red);
+  z-index: 999;
+  animation: slideDown 0.3s ease;
+}
+
+.nav_block{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

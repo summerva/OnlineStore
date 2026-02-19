@@ -1,0 +1,12 @@
+.search input {
+  padding: 5px 10px;
+  border: var(--border-white);
+  border-radius: var(--border-radius);
+  width: 100%;
+
+  &:hover,
+  &:focus {
+    border: var(--border-red);
+    /* background: var(--bg-gray); */
+  }
+}

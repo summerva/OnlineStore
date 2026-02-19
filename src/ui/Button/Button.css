@@ -1,0 +1,13 @@
+.button {
+  background: var(--red);
+  color: var(--text-white);
+  padding: 0px 24px;
+  border-radius: var(--border-radius);
+  border: var(--border-red);
+  font-weight: 600;
+
+  &:hover {
+    transition-duration: 0.1s;
+    background: var(--red-hover);
+  }
+}

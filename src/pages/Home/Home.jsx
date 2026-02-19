@@ -1,3 +1,4 @@
+import ProductCard from "../../components/ProductCard/ProductCard";
 import "./Home.css";
 
 const Home = () => {
@@ -22,7 +23,11 @@ const Home = () => {
             </li>
             <li className="main__item">
               <input type="checkbox" />
-              <label htmlFor="phone">Телефон</label>
+              <label htmlFor="phone">Планшет</label>
+            </li>
+            <li className="main__item">
+              <input type="checkbox" />
+              <label htmlFor="phone">Ноутбук</label>
             </li>
           </ul>
           <div className="search__block main__block">
@@ -38,11 +43,11 @@ const Home = () => {
             <ul className="main__block">
               <li className="main__item">
                 <input type="checkbox" />
-                <label htmlFor="phone">Телефон</label>
+                <label htmlFor="phone">Apple</label>
               </li>
               <li className="main__item">
                 <input type="checkbox" />
-                <label htmlFor="phone">Телефон</label>
+                <label htmlFor="phone">Samsung</label>
               </li>
             </ul>
           </div>
@@ -75,38 +80,9 @@ const Home = () => {
         </div>
         <div className="main__grid">
           <div className="grid__products">
-            <div className="product__card">
-              <img src="https://img.mvideo.ru/Big/400454546bb1.jpg" alt="" />
-              <div className="product__inner">
-                <h3>Название</h3>
-                <p>Цена</p>
-              </div>
-              <button className="product_button button">Купить</button>
-            </div>
-            <div className="product__card">
-              <img src="https://img.mvideo.ru/Big/400454546bb1.jpg" alt="" />
-              <div className="product__inner">
-                <h3>Название</h3>
-                <p>Цена</p>
-              </div>
-              <button className="product_button button">Купить</button>
-            </div>
-            <div className="product__card">
-              <img src="https://img.mvideo.ru/Big/400454546bb1.jpg" alt="" />
-              <div className="product__inner">
-                <h3>Название</h3>
-                <p>Цена</p>
-              </div>
-              <button className="product_button button">Купить</button>
-            </div>
-            <div className="product__card">
-              <img src="https://img.mvideo.ru/Big/400454546bb1.jpg" alt="" />
-              <div className="product__inner">
-                <h3>Название</h3>
-                <p>Цена</p>
-              </div>
-              <button className="product_button button">Купить</button>
-            </div>
+            <ProductCard/>
+            <ProductCard/>
+            <ProductCard/>
           </div>
         </div>
       </div>

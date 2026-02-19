@@ -9,6 +9,10 @@
   margin-top: auto;
 }
 
+.footer h1{
+  font-family: "Space Grotesk", sans-serif;
+}
+
 .footer__nav {
   display: flex;
   gap: 15px;
