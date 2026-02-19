@@ -1,3 +1,4 @@
+import Input from "../../ui/Input/Input";
 import "./Authorization.css";
 
 const Authorization = () => {
@@ -6,9 +7,9 @@ const Authorization = () => {
       <div className="auth container">
         <h1>Авторизация</h1>
         <div className="auth__inner box search">
-          <input type="email" name="" id="" placeholder="Почта" />
-          <input type="password" name="" id="" placeholder="Пароль" />
-          <button className="button auth_button">Войти</button>
+          <Input typ="email" name="" id="" placeholder="Почта" />
+          <Input typ="password" name="" id="" placeholder="Пароль" />
+          <Button className="auth_button">Войти</Button>
           <a href="">У меня нет аккаунта</a>
         </div>
       </div>

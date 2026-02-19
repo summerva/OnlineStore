@@ -1,0 +1,39 @@
+.main__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.main__item input {
+  flex-shrink: 0;
+  appearance: none;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  border: var(--border-white);
+  border-radius: var(--border-radius-input);
+  background: var(--bg-gray);
+
+  &:checked {
+    background-color: var(--red-hover);
+    border: var(--border-red);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 16px;
+    height: 16px;
+    background: url("../../assets/icon-check_white.svg") center/contain no-repeat;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+}
+
+.main__item input:checked::after {
+  opacity: 1;
+}

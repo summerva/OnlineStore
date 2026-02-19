@@ -9,7 +9,6 @@ const Input = (props) => {
         // className='',
     } = props
   return (
-    // <div className={`search ${className}`} >
       <input
         type={type}
         name={name}

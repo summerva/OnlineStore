@@ -1,4 +1,6 @@
 import ProductCard from "../../components/ProductCard/ProductCard";
+import Checkbox from "../../ui/Checkbox/Checkbox";
+import Input from "../../ui/Input/Input";
 import "./Home.css";
 
 const Home = () => {
@@ -17,23 +19,14 @@ const Home = () => {
         <div className="main__filter">
           <ul className="main__block">
             <p>Категория</p>
-            <li className="main__item">
-              <input type="checkbox" />
-              <label htmlFor="phone">Телефон</label>
-            </li>
-            <li className="main__item">
-              <input type="checkbox" />
-              <label htmlFor="phone">Планшет</label>
-            </li>
-            <li className="main__item">
-              <input type="checkbox" />
-              <label htmlFor="phone">Ноутбук</label>
-            </li>
+              <Checkbox id="category">Телефон</Checkbox>
+              <Checkbox id="category">Планшет</Checkbox>
+              <Checkbox id="category">Ноутбук</Checkbox>
           </ul>
           <div className="search__block main__block">
             <div className="search">
               <p>Бренд</p>
-              <input
+              <Input
                 type="text"
                 name="search"
                 id="search"
@@ -41,24 +34,18 @@ const Home = () => {
               />
             </div>
             <ul className="main__block">
-              <li className="main__item">
-                <input type="checkbox" />
-                <label htmlFor="phone">Apple</label>
-              </li>
-              <li className="main__item">
-                <input type="checkbox" />
-                <label htmlFor="phone">Samsung</label>
-              </li>
+              <Checkbox id="brand">Apple</Checkbox>
+              <Checkbox id="brand">Samsung</Checkbox>
             </ul>
           </div>
           <div className="price__block main__block">
             <p>Цена</p>
             <div className="price__block">
               <div className="search">
-                <input type="text" name="search" id="search" placeholder="0" />
+                <Input type="text" name="search" id="search" placeholder="0" />
               </div>
               <div className="search">
-                <input
+                <Input
                   type="text"
                   name="search"
                   id="search"
@@ -67,22 +54,18 @@ const Home = () => {
               </div>
             </div>
             <ul className="main__block">
-              <li className="main__item">
-                <input type="checkbox" />
-                <label htmlFor="phone">До 25000</label>
-              </li>
-              <li className="main__item">
-                <input type="checkbox" />
-                <label htmlFor="phone">До 50000</label>
-              </li>
+              <Checkbox id="price">До 10000</Checkbox>
+              <Checkbox id="price">До 25000</Checkbox>
+              <Checkbox id="price">До 50000</Checkbox>
+              <Checkbox id="price">До 100000</Checkbox>
             </ul>
           </div>
         </div>
         <div className="main__grid">
           <div className="grid__products">
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
           </div>
         </div>
       </div>
