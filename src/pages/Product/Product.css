@@ -1,0 +1,27 @@
+.product__detail {
+  display: flex;
+  margin-block: 30px;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.product__detail img {
+  height: 500px;
+  width: 500px;
+  border: var(--border-white);
+  border-radius: var(--border);
+  box-shadow: var(--box-shadow);
+}
+
+.product__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  padding: 30px;
+}
+
+.buy_btn {
+  width: 60%;
+  margin: 0 auto;
+}

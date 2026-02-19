@@ -32,7 +32,7 @@ const Cart = () => {
           </div>
         </div>
         <div className="order__info">
-          <div className="box">
+          <div className="box-white">
             <h2>Детали заказа</h2>
           </div>
         </div>

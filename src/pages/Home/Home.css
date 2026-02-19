@@ -53,12 +53,14 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin-bottom: 10px;
 }
 
 .price__block {
   display: flex;
   column-gap: 10px;
-  margin-bottom: 10px;
+
+
 }
 
 .main__grid {
@@ -67,6 +69,13 @@
   background: var(--bg-white);
   width: 75%;
   padding: 50px;
+  height: 100%;
+}
+
+.reset__button{
+  height: 35px;
+  width: 60%;
+  margin: 0 auto;
 }
 
 .grid__products {

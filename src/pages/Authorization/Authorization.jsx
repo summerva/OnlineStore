@@ -1,4 +1,6 @@
 import Input from "../../ui/Input/Input";
+import { Link } from "react-router-dom";
+import Button from "../../ui/Button/Button";
 import "./Authorization.css";
 
 const Authorization = () => {
@@ -10,7 +12,7 @@ const Authorization = () => {
           <Input typ="email" name="" id="" placeholder="Почта" />
           <Input typ="password" name="" id="" placeholder="Пароль" />
           <Button className="auth_button">Войти</Button>
-          <a href="">У меня нет аккаунта</a>
+          <Link to="/reg">У меня нет аккаунта</Link>
         </div>
       </div>
     </>

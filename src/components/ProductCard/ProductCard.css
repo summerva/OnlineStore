@@ -16,6 +16,10 @@
 
 .product__inner h3 {
   margin: 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; 
+  overflow: hidden;
 }
 
 .product__inner {

@@ -1,6 +1,7 @@
 import Button from "../../ui/Button/Button";
 import Checkbox from "../../ui/Checkbox/Checkbox";
 import Input from "../../ui/Input/Input";
+import { Link } from "react-router-dom";
 import "./Registration.css";
 
 const Registration = () => {
@@ -15,7 +16,7 @@ const Registration = () => {
           <Input type="password" name="" id="" placeholder="Пароль" />
           <Checkbox>Обработка персональных данных</Checkbox>
           <Button className="reg_button">Зарегестрироваться</Button>
-          <a href="">Уже есть аккаунт</a>
+          <Link to="/auth">Уже есть аккаунт</Link>
         </div>
       </div>
     </>
