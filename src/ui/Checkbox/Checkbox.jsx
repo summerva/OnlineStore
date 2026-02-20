@@ -4,7 +4,8 @@ const Checkbox = (props) => {
     const {
         children,
         value,
-        id
+      id,
+        onChange,
     } = props;
   return (
     <li className="main__item">
@@ -12,6 +13,7 @@ const Checkbox = (props) => {
         type="checkbox" 
         id={id}
         value={value} 
+        onChange={onChange}
       />
       <label htmlFor={id}>{children}</label>
     </li>

@@ -1,21 +1,24 @@
-import './Input.css'
+import "./Input.css";
 
 const Input = (props) => {
-    const {
-        type = '',
-        name = '',
-        id='',
-        placeholder = '',
-        // className='',
-    } = props
+  const {
+    type = "",
+    name = "",
+    id = "",
+    placeholder = "",
+    value,
+    onChange,
+  } = props;
   return (
-      <input
-        type={type}
-        name={name}
-        id={id}
-        placeholder={placeholder}
-      />
+    <input
+      type={type}
+      name={name}
+      id={id}
+      placeholder={placeholder}
+      value={value}
+      onChange={onChange}
+    />
   );
 };
 
-export default Input
+export default Input;

@@ -1,6 +1,5 @@
 import "./ProductCard.css";
-import Header from "../Header/Header";
-import Button from "../../ui/Button/Button";
+import Button from "@/ui/Button/Button";
 
 const ProductCard = (props) => {
   const {
