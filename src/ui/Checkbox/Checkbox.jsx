@@ -1,18 +1,18 @@
 import "./Checkbox.css";
 
 const Checkbox = (props) => {
-    const {
-        children,
-        value,
-      id,
-        onChange,
-    } = props;
+  const {
+    children,
+    checked,
+    id,
+    onChange
+  } = props;
   return (
     <li className="main__item">
-      <input 
-        type="checkbox" 
+      <input
+        type="checkbox"
         id={id}
-        value={value} 
+        checked={checked}
         onChange={onChange}
       />
       <label htmlFor={id}>{children}</label>

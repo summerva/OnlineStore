@@ -8,6 +8,7 @@ const Input = (props) => {
     placeholder = "",
     value,
     onChange,
+    onKeyDown,
   } = props;
   return (
     <input
@@ -17,6 +18,7 @@ const Input = (props) => {
       placeholder={placeholder}
       value={value}
       onChange={onChange}
+      onKeyDown={onKeyDown}
     />
   );
 };

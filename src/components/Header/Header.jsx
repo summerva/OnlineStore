@@ -7,9 +7,7 @@ import Button from "@/ui/Button/Button";
 import Input from "@/ui/Input/Input";
 
 const Header = (props) => {
-  const {
-    onSearch,
-  } = props
+  const { onSearch } = props;
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -42,6 +40,7 @@ const Header = (props) => {
           placeholder="Введите название..."
           value={searchQuery}
           onChange={handleInputChange}
+          onKeyDown={(e) => e.key === "Enter" && handleSearch()}
         />
         <Button onClick={handleSearch}>Поиск</Button>
       </div>

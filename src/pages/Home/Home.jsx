@@ -16,6 +16,7 @@ const Home = (props) => {
   const [brandSearch, setBrandSearch] = useState(""); // для Input
   const [priceFrom, setPriceFrom] = useState(""); //Цена ОТ: минимальная цена
   const [priceTo, setPriceTo] = useState(""); //Цена ДО: максимальная цена
+  const [selectedPriceRanges, setSelectedPriceRanges] = useState([]);
 
   const getUniqueCategories = (products) => {
     // Извлекаем все категории
@@ -32,38 +33,48 @@ const Home = (props) => {
     return Array.from(unique);
   };
 
-const filterProducts = (product) => {
-  // 1. КАТЕГОРИИ
-  if (selectedCategories.length > 0 && !selectedCategories.includes(product.category)) {
-    return false;
-  }
-  
-  // 2. БРЕНДЫ
-  if (selectedBrands.length > 0 && !selectedBrands.includes(product.brand)) {
-    return false;
-  }
-  
-  // 3. ЦЕНЫ
-  if (priceFrom && product.price < parseInt(priceFrom)) return false;
-  if (priceTo && product.price > parseInt(priceTo)) return false;
-  
-  // 4. ПОИСК
-  if (!searchQuery?.trim()) return true;
-  
-  const query = searchQuery.toLowerCase().trim();
-  const title = product.title.toLowerCase();
-  
-  if (title.includes(query)) return true;
-  
-  const queryWords = query.split(/\s+/);
-  const titleWords = title.split(/\s+/);
-  const wordMatch = queryWords.some((q) =>
-    titleWords.some((t) => t.includes(q))
-  );
-  
-  return wordMatch;
-};
+  const filterProducts = (product) => {
+    // 1. КАТЕГОРИИ
+    if (
+      selectedCategories.length > 0 &&
+      !selectedCategories.includes(product.category)
+    ) {
+      return false;
+    }
 
+    // 2. БРЕНДЫ
+    if (selectedBrands.length > 0 && !selectedBrands.includes(product.brand)) {
+      return false;
+    }
+
+    // 3. ЦЕНЫ
+    if (priceFrom && product.price < parseInt(priceFrom)) return false;
+    if (priceTo && product.price > parseInt(priceTo)) return false;
+
+    // Checkbox цены
+    if (selectedPriceRanges.length > 0) {
+      const maxPrice = Math.min(
+        ...selectedPriceRanges.map((r) => parseInt(r.match(/\d+/)[0])),
+      );
+      if (product.price > maxPrice) return false;
+    }
+
+    // 4. ПОИСК
+    if (!searchQuery?.trim()) return true;
+
+    const query = searchQuery.toLowerCase().trim();
+    const title = product.title.toLowerCase();
+
+    if (title.includes(query)) return true;
+
+    const queryWords = query.split(/\s+/);
+    const titleWords = title.split(/\s+/);
+    const wordMatch = queryWords.some((q) =>
+      titleWords.some((t) => t.includes(q)),
+    );
+
+    return wordMatch;
+  };
 
   // функция сортировки, по убыванию, возрастанию и обычный массив по id (1, 2, 3)
   const sortProducts = (sortBy, productsToSort) => {
@@ -106,8 +117,27 @@ const filterProducts = (product) => {
     });
   };
 
+  const togglePriceRange = (range) => {
+    setSelectedPriceRanges((prev) => {
+      if (prev.includes(range)) {
+        return prev.filter((r) => r !== range);
+      } else {
+        return [...prev, range];
+      }
+    });
+  };
+
   const handleProductClick = (productId) => {
     navigate(`/product/${productId}`);
+  };
+
+  const resetAllFilters = () => {
+    setSelectedCategories([]);
+    setSelectedBrands([]);
+    setPriceFrom("");
+    setPriceTo("");
+    setSelectedPriceRanges([]);
+    setSortBy("popular");
   };
 
   const filteredProducts = products.filter(filterProducts);
@@ -115,6 +145,7 @@ const filterProducts = (product) => {
   const categories = getUniqueCategories(products);
   // const brands = getUniqueBrands(products);
   console.log(sortProducts("price-asc", filteredProducts));
+  console.log("Категории:", selectedCategories);
 
   return (
     <div className="main container">
@@ -196,12 +227,34 @@ const filterProducts = (product) => {
               </div>
             </div>
             <ul className="main__block">
-              <Checkbox id="price">До 1000</Checkbox>
-              <Checkbox id="price">До 5000</Checkbox>
-              <Checkbox id="price">До 20000</Checkbox>
-              <Checkbox id="price">До 50000</Checkbox>
+              <Checkbox
+                checked={selectedPriceRanges.includes("До 1000")}
+                onChange={() => togglePriceRange("До 1000")}
+              >
+                До 1000
+              </Checkbox>
+              <Checkbox
+                checked={selectedPriceRanges.includes("До 5000")}
+                onChange={() => togglePriceRange("До 5000")}
+              >
+                До 5000
+              </Checkbox>
+              <Checkbox
+                checked={selectedPriceRanges.includes("До 20000")}
+                onChange={() => togglePriceRange("До 20000")}
+              >
+                До 20000
+              </Checkbox>
+              <Checkbox
+                checked={selectedPriceRanges.includes("До 50000")}
+                onChange={() => togglePriceRange("До 50000")}
+              >
+                До 50000
+              </Checkbox>
             </ul>
-            <Button className="reset__button">Сброс</Button>
+            <Button className="reset__button" onClick={resetAllFilters}>
+              Сброс
+            </Button>
           </div>
         </div>
         <div className="main__grid">
