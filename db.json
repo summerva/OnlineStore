@@ -48,16 +48,11 @@
   ],
   "users": [
     {
-      "id": "1",
-      "email": "user@example.com",
-      "name": "Полина Самарева"
-    },
-    {
-      "id": "55b8",
-      "name": "Polina Samareva",
-      "phone": "89264715729",
-      "email": "polinapolina0621@gmail.com",
-      "password": "Polina10"
+      "id": "5207",
+      "name": "Admin",
+      "phone": "89991234567",
+      "email": "test@mail.ru",
+      "password": "Admin123"
     }
   ],
   "orders": [

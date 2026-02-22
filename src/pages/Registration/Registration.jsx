@@ -1,6 +1,6 @@
-import Button from "../../ui/Button/Button";
-import Checkbox from "../../ui/Checkbox/Checkbox";
-import Input from "../../ui/Input/Input";
+import Button from "@/ui/Button/Button";
+import Checkbox from "@/ui/Checkbox/Checkbox";
+import Input from "@/ui/Input/Input";
 import { Link } from "react-router-dom";
 import "./Registration.css";
 import { useState } from "react";

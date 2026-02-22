@@ -143,9 +143,6 @@ const Home = (props) => {
   const filteredProducts = products.filter(filterProducts);
   const sortedProducts = sortProducts(sortBy, filteredProducts);
   const categories = getUniqueCategories(products);
-  // const brands = getUniqueBrands(products);
-  console.log(sortProducts("price-asc", filteredProducts));
-  console.log("Категории:", selectedCategories);
 
   return (
     <div className="main container">

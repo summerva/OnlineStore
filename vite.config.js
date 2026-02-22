@@ -8,6 +8,7 @@ export default defineConfig(({ mode }) => ({
   server: {
     proxy: {
       "/users": "http://localhost:3001",
+      "/login": "http://localhost:3001",
     },
   },
   resolve: {
