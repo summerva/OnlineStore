@@ -12,14 +12,31 @@
   justify-content: center;
   align-items: center;
   gap: 20px;
-  padding: 40px 20px;
+  padding: 40px;
   margin-bottom: 40px;
 }
 
-.reg_item input {
-  width: 0%;
+.reg_button {
+  opacity: 0.5;
+  cursor: not-allowed;
+  padding: 5px 24px;
+  transition: opacity 0.2s;
 }
 
-.reg_button {
-  padding: 5px 24px;
+.reg_button:not(.disabled) {
+  opacity: 1; 
+  cursor: pointer;
+}
+
+.error {
+  min-height: 16px;
+  color: var(--red);
+  font-size: 12px;
+}
+
+.input_group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
 }

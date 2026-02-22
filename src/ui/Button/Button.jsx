@@ -4,12 +4,14 @@ const Button = (props) => {
   const {
     children,
     className = "",
-    onClick
+    onClick,
+    disabled,
   } = props;
   return (
     <>
       <button
         className={`button ${className}`}
+        disabled={disabled}
         type="submit"
         onClick={onClick}
       >

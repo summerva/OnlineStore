@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Смарт-часы HUAWEI Watch Fit 4 Black",
       "category": "Часы",
       "brand": "Huawei",
@@ -10,7 +10,7 @@
       "description": "Смарт-часы Huawei Watch Fit 4 Black..."
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Смартфон Apple iPhone 17 Pro",
       "category": "Смартфон",
       "brand": "Apple",
@@ -19,7 +19,7 @@
       "description": "Смартфон Apple..."
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Телевизор Hisense 40A5Q",
       "category": "Телевизор",
       "brand": "Hisense",
@@ -28,7 +28,7 @@
       "description": "Телевизор Hisense..."
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "Умная колонка Яндекс Станция Мини",
       "category": "Колонка",
       "brand": "Яндекс",
@@ -37,7 +37,7 @@
       "description": "Умная колонка «Яндекс Станция Мини с Алисой», с часами, черный опал — обновленная версия умной колонки с голосовым помощником. Модель получила громкий звук мощностью 10 Вт."
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "Наушники Apple AirPods Pro 2 MagSafe",
       "category": "Наушники",
       "brand": "Apple",
@@ -48,16 +48,26 @@
   ],
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "email": "user@example.com",
       "name": "Полина Самарева"
+    },
+    {
+      "id": "55b8",
+      "name": "Polina Samareva",
+      "phone": "89264715729",
+      "email": "polinapolina0621@gmail.com",
+      "password": "Polina10"
     }
   ],
   "orders": [
     {
-      "id": 1,
+      "id": "1",
       "userId": 1,
-      "products": [1, 2],
+      "products": [
+        1,
+        2
+      ],
       "total": 120000,
       "date": "2026-02-21"
     }
