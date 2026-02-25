@@ -53,6 +53,13 @@
       "phone": "89991234567",
       "email": "test@mail.ru",
       "password": "Admin123"
+    },
+    {
+      "id": "2814",
+      "name": "Имя",
+      "phone": "82222222222",
+      "email": "123@mail.com",
+      "password": "Qwerty1"
     }
   ],
   "orders": [

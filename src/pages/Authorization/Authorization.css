@@ -12,10 +12,22 @@
   justify-content: center;
   align-items: center;
   gap: 20px;
-  padding: 40px 20px;
-  margin-bottom: 40px;  
+  padding: 40px 40px;
+  margin-bottom: 40px;
 }
 
-.reg_button {
+.auth_button {
   padding: 5px 24px;
+}
+
+.success-message {
+  background: var(--bg-succes);
+  color: var(--text-succes);
+  padding: 15px;
+  border-radius: 8px;
+  margin: 15px 0;
+  border: var(--border-succes);
+  text-align: center;
+  font-weight: 500;
+  animation: slideIn 0.3s ease;
 }

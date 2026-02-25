@@ -1,9 +1,10 @@
 import Button from "@/ui/Button/Button";
 import Checkbox from "@/ui/Checkbox/Checkbox";
 import Input from "@/ui/Input/Input";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Registration.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import AuthContext from "@/context/AuthContext";
 
 const Registration = () => {
   const VALIDATION_RULES = {
@@ -43,11 +44,13 @@ const Registration = () => {
     password: "",
   });
 
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const hasErrors = Object.values(errors).some((error) => error !== "");
+  const [successMessage, setSuccessMessage] = useState("");
 
   const validateField = (fieldName, value) => {
-
     const rule = VALIDATION_RULES[fieldName];
     if (!rule) return "";
     if (value === "") return "";
@@ -78,19 +81,26 @@ const Registration = () => {
 
     try {
       // обработка ошибок
-       console.log("Отправка:", formData);
+      console.log("Отправка:", formData);
       const response = await fetch("/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-      console.log("Статус:", response.status); 
+      console.log("Статус:", response.status);
       const data = await response.json();
 
       if (response.ok) {
-        console.log("Успех:", data);
-        // redirect на /profile
-        window.location.href = "/profile";
+        const newUser = data;
+
+        login(newUser); //Автологин
+
+        setSuccessMessage("Регистрация успешна! Добро пожаловать!");
+
+        setTimeout(() => {
+          setSuccessMessage("");
+          navigate("/");
+        }, 2000);
       } else {
         alert("Ошибка сервера: " + data.message);
       }
@@ -105,6 +115,9 @@ const Registration = () => {
   return (
     <div className="reg container">
       <h1>Регистрация</h1>
+      {successMessage && (
+        <div className="success-message">{successMessage}</div>
+      )}
       <form className="reg__inner box search" onSubmit={handleSubmit}>
         <div className="input_group">
           <Input

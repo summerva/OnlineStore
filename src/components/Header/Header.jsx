@@ -1,16 +1,20 @@
 import "./Header.css";
 import profile from "@/assets/profile.svg";
 import cart from "@/assets/cart.svg";
+import exit from "@/assets/exit.svg";
 import { Link } from "react-router-dom";
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import Button from "@/ui/Button/Button";
 import Input from "@/ui/Input/Input";
+import AuthContext from "@/context/AuthContext";
 
 const Header = (props) => {
   const { onSearch } = props;
+  const { user, logout } = useContext(AuthContext);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [logoutMessage, setLogoutMessage] = useState("");
 
   const menuRef = useRef(null);
   const burgerRef = useRef(null);
@@ -49,10 +53,24 @@ const Header = (props) => {
           <Link to="/profile">
             <div className="nav_block">
               <img src={profile} alt="Профиль" />
-              <p>Войти</p>
-              {/* <p>name если авторизван</p> */}
+              <p>{user ? user.name : "Войти"}</p>
             </div>
           </Link>
+          {user && (
+            <div
+              className="nav_block"
+              onClick={() => {
+                setLogoutMessage("Вы вышли из аккаунта");
+                setTimeout(() => {
+                  logout();
+                  setLogoutMessage("");
+                }, 1500);
+              }}
+            >
+              <img src={exit} alt="Выход" />
+              <p>Выйти</p>
+            </div>
+          )}
           <Link to="/cart">
             <div className="nav_block">
               <img src={cart} alt="Корзина" />
@@ -83,6 +101,7 @@ const Header = (props) => {
             </div>
           )}
         </nav>
+        {logoutMessage && <div className="logout-message">{logoutMessage}</div>}
       </div>
     </div>
   );

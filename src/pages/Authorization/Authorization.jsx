@@ -1,8 +1,9 @@
 import Input from "@/ui/Input/Input";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "@/ui/Button/Button";
 import "./Authorization.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import AuthContext from "@/context/AuthContext";
 
 const Authorization = () => {
   const VALIDATION_RULES = {
@@ -30,6 +31,9 @@ const Authorization = () => {
 
   const [loading, setLoading] = useState(false);
   const hasErrors = Object.values(errors).some((error) => error !== "");
+  const { login } = useContext(AuthContext); // ✅ ИЗВЛЕКИ login()
+  const navigate = useNavigate(); // ✅ React Router навигация
+  const [successMessage, setSuccessMessage] = useState("");
 
   const validateField = (name, value) => {
     const rule = VALIDATION_RULES[name];
@@ -73,56 +77,58 @@ const Authorization = () => {
     }));
   };
 
- const handleSubmit = async (event) => {
-  event.preventDefault();
-  console.log("Форма отправлена! formData:", formData);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log("Форма отправлена! formData:", formData);
 
-  if (hasErrors) {
-    console.log("Есть ошибки валидации");
-    return;
-  }
-
-  setLoading(true);
-
-  try {
-    // Получаем всех пользователей
-    console.log("Ищем пользователя");
-    const usersResponse = await fetch("/users"); // GET всех пользователей
-    const allUsers = await usersResponse.json();
-    
-    // Ищем точное совпадение email+password
-    const user = allUsers.find(u => 
-      u.email === formData.email && 
-      u.password === formData.password
-    );
-    
-    console.log("Найден пользователь:", user);
-
-    if (user) {
-      // Если успех - сохраняем в localStorage + редирект
-      localStorage.setItem("user", JSON.stringify(user));
-      console.log("Авторизация успешна! User ID:", user.id);
-      window.location.href = "/profile";
-    } else {
-      // Если не найден
-      console.log("Пользователь не найден");
-      alert("Неверный email или пароль");
+    if (hasErrors) {
+      console.log("Есть ошибки валидации");
+      return;
     }
-    
-  } catch (error) {
-    console.error("Сеть:", error);
-    alert("Ошибка сети. Проверь соединение.");
-  } finally {
-    setLoading(false);
-    console.log("Загрузка завершена");
-  }
-};
 
+    setLoading(true);
+
+    try {
+      // Получаем всех пользователей
+      console.log("Ищем пользователя");
+      const usersResponse = await fetch("/users"); // GET всех пользователей
+      const allUsers = await usersResponse.json();
+
+      // Ищем точное совпадение email+password
+      const user = allUsers.find(
+        (u) => u.email === formData.email && u.password === formData.password,
+      );
+
+      console.log("Найден пользователь:", user);
+
+      if (user) {
+        login(user);
+        setSuccessMessage("✅ Успешный вход!");
+        setTimeout(() => {
+          setSuccessMessage(""); // Скрыть уведомление
+          navigate("/"); // На главную
+        }, 2000);
+      } else {
+        // Если не найден
+        console.log("Пользователь не найден");
+        alert("Неверный email или пароль");
+      }
+    } catch (error) {
+      console.error("Сеть:", error);
+      alert("Ошибка сети. Проверь соединение.");
+    } finally {
+      setLoading(false);
+      console.log("Загрузка завершена");
+    }
+  };
 
   return (
     <>
       <div className="auth container">
         <h1>Авторизация</h1>
+        {successMessage && (
+          <div className="success-message">{successMessage}</div>
+        )}
         <form className="auth__inner box search" onSubmit={handleSubmit}>
           <div className="input_group">
             <Input
@@ -146,7 +152,7 @@ const Authorization = () => {
               <span className="error">{errors.password}</span>
             )}
           </div>
-          <Button type="submit" disabled={hasErrors || loading}>
+          <Button className="auth_button" type="submit" disabled={hasErrors || loading}>
             Войти
           </Button>
           <Link to="/reg">Нет аккаунта</Link>

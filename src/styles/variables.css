@@ -1,6 +1,8 @@
 :root {
   --text-black: #1a1a1a;
   --text-white: #ffffff;
+  --text-succes: #155724;
+  --text-failure: #721c24;
 
   --red: #ff0000;
   --red-hover: #cc0000;
@@ -8,10 +10,14 @@
   --bg-dark: #1e1e1e;
   --bg-gray: #f3f3f7;
   --bg-white: #ffffff;
+  --bg-succes: #d4edda;
+  --bg-failure: #f8d7da;
 
   --border: 1px solid #1e1e1e;
   --border-white: 1px solid #d9d9d9;
   --border-red: 1px solid var(--red);
+  --border-succes: 1px solid #c3e6cb;
+  --border-failure: 1px solid #f5c6cb;
   --border-button: 20px;
   --border-radius: 8px;
   --border-radius-input: 4px;

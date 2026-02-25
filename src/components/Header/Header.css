@@ -27,6 +27,7 @@
   align-items: center;
   justify-content: center;
   gap: 40px;
+  cursor: pointer;
 }
 
 .header__nav img {
@@ -73,4 +74,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.logout-message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--bg-failure);
+  color: var(--text-failure);
+  padding: 12px 20px;
+  border-radius: 6px;
+  border: var(--border-failure);
+  z-index: 1000;
+  animation: slideIn 0.3s ease;
 }

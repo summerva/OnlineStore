@@ -8,16 +8,18 @@ import Registration from "./pages/Registration/Registration";
 import Authorization from "./pages/Authorization/Authorization";
 import Product from "./pages/Product/Product";
 import { useState, useEffect } from "react";
+import { AuthProvider } from "./context/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const App = () => {
-  const [products, setProducts] = useState([])
+  const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-  fetch('http://localhost:3001/products')
-    .then(res => res.json())
-    .then(setProducts);
-}, []);
+    fetch("http://localhost:3001/products")
+      .then((res) => res.json())
+      .then(setProducts);
+  }, []);
 
   const handleSearch = (query) => {
     console.log("App: получил", query);
@@ -25,7 +27,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <AuthProvider>
       <Header onSearch={handleSearch} />
       <Routes>
         {/* Профиль и авторизация */}
@@ -33,9 +35,16 @@ const App = () => {
           path="/"
           element={<Home products={products} searchQuery={searchQuery} />}
         />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/reg" element={<Registration />} />
         <Route path="/auth" element={<Authorization />} />
+        <Route path="/reg" element={<Registration />} />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
         {/* Товары */}
         <Route path="/product/:id" element={<Product products={products} />} />
         {/* Корзина */}
@@ -46,7 +55,7 @@ const App = () => {
         {/* <Route path="*" element={<NotFound />} /> */}
       </Routes>
       <Footer />
-    </>
+    </AuthProvider>
   );
 };
 

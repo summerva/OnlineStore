@@ -24,7 +24,7 @@
 }
 
 .reg_button:not(.disabled) {
-  opacity: 1; 
+  opacity: 1;
   cursor: pointer;
 }
 
@@ -39,4 +39,15 @@
   flex-direction: column;
   gap: 4px;
   width: 100%;
+}
+
+.success-message {
+  background: var(--bg-succes);
+  color: var(--text-succes);
+  padding: 15px;
+  border-radius: 8px;
+  margin: 15px 0;
+  border: var(--border-succes);
+  text-align: center;
+  font-weight: 500;
 }
