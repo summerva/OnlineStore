@@ -10,6 +10,8 @@ import Product from "./pages/Product/Product";
 import { useState, useEffect } from "react";
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
+import { OrdersProvider } from "./context/OrdersContext";
+import OrderConfirm from "./pages/OrderConfirm/OrderConfirm";
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -27,35 +29,41 @@ const App = () => {
   };
 
   return (
-    <AuthProvider>
-      <Header onSearch={handleSearch} />
-      <Routes>
-        {/* Профиль и авторизация */}
-        <Route
-          path="/"
-          element={<Home products={products} searchQuery={searchQuery} />}
-        />
-        <Route path="/auth" element={<Authorization />} />
-        <Route path="/reg" element={<Registration />} />
-        <Route
-          path="/profile"
-          element={
-            <ProtectedRoute>
-              <Profile />
-            </ProtectedRoute>
-          }
-        />
-        {/* Товары */}
-        <Route path="/product/:id" element={<Product products={products} />} />
-        {/* Корзина */}
-        <Route path="/cart" element={<Cart />} />
-        {/* <Route path="/cart/checkout" element={<Checkout />} />
+    <OrdersProvider>
+      <AuthProvider>
+        <Header onSearch={handleSearch} />
+        <Routes>
+          {/* Профиль и авторизация */}
+          <Route
+            path="/"
+            element={<Home products={products} searchQuery={searchQuery} />}
+          />
+          <Route path="/auth" element={<Authorization />} />
+          <Route path="/reg" element={<Registration />} />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
+          {/* Товары */}
+          <Route
+            path="/product/:id"
+            element={<Product products={products} />}
+          />
+          {/* Корзина */}
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/cart/confirm" element={<OrderConfirm/>}/>
+          {/* <Route path="/cart/checkout" element={<Checkout />} />
         <Route path="/cart/confirm" element={<OrderConfirm />} /> */}
-        {/* 404 */}
-        {/* <Route path="*" element={<NotFound />} /> */}
-      </Routes>
-      <Footer />
-    </AuthProvider>
+          {/* 404 */}
+          {/* <Route path="*" element={<NotFound />} /> */}
+        </Routes>
+        <Footer />
+      </AuthProvider>
+    </OrdersProvider>
   );
 };
 

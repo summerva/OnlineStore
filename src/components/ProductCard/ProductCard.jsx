@@ -5,6 +5,7 @@ const ProductCard = (props) => {
   const {
     product,
     onClick,
+    onAddToCart
   } = props
   return (
     <div className="product__card" onClick={onClick}> 
@@ -13,7 +14,10 @@ const ProductCard = (props) => {
         <h3>{ product.title }</h3>
         <p>{ product.price.toLocaleString() }₽</p>
       </div>
-      <Button className="product_button">Купить</Button>
+      <Button className="product_button" onClick={(e) => {
+        e.stopPropagation();
+        onAddToCart(product)
+      }}>Купить</Button>
     </div>
   );
 };

@@ -4,16 +4,14 @@ const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  // вызовет автоматически при запуске
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (localStorage.user) {
-        setUser(JSON.parse(localStorage.user));
-      }
-    }, 0);
-
-    return () => clearTimeout(timer); // очистка
+    const userData = localStorage.getItem("user");
+    if (userData) {
+      setUser(JSON.parse(userData));
+    }
+    setLoading(false);
   }, []);
 
   const login = (userData) => {
@@ -33,6 +31,7 @@ export function AuthProvider({ children }) {
         login,
         logout,
         isAuth: !!user,
+        loading
       }}
     >
       {children}

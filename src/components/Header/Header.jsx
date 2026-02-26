@@ -1,16 +1,18 @@
 import "./Header.css";
 import profile from "@/assets/profile.svg";
-import cart from "@/assets/cart.svg";
+import cartimg from "@/assets/cart.svg";
 import exit from "@/assets/exit.svg";
 import { Link } from "react-router-dom";
 import { useState, useRef, useContext } from "react";
 import Button from "@/ui/Button/Button";
 import Input from "@/ui/Input/Input";
 import AuthContext from "@/context/AuthContext";
+import OrdersContext from "@/context/OrdersContext";
 
 const Header = (props) => {
   const { onSearch } = props;
   const { user, logout } = useContext(AuthContext);
+  const { cart } = useContext(OrdersContext)
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -73,9 +75,9 @@ const Header = (props) => {
           )}
           <Link to="/cart">
             <div className="nav_block">
-              <img src={cart} alt="Корзина" />
+              <img src={cartimg} alt="Корзина" />
               <p>Корзина</p>
-              <span className="badge">0</span>
+              <span className="badge">{ cart.length }</span>
             </div>
           </Link>
           <button

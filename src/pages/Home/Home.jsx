@@ -4,7 +4,8 @@ import Checkbox from "@/ui/Checkbox/Checkbox";
 import Input from "@/ui/Input/Input";
 import "./Home.css";
 import Button from "@/ui/Button/Button";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import OrdersContext from "@/context/OrdersContext";
 
 const Home = (props) => {
   const { products, searchQuery } = props;
@@ -17,6 +18,7 @@ const Home = (props) => {
   const [priceFrom, setPriceFrom] = useState(""); //Цена ОТ: минимальная цена
   const [priceTo, setPriceTo] = useState(""); //Цена ДО: максимальная цена
   const [selectedPriceRanges, setSelectedPriceRanges] = useState([]);
+  const { dispatch } = useContext(OrdersContext)
 
   const getUniqueCategories = (products) => {
     // Извлекаем все категории
@@ -138,6 +140,17 @@ const Home = (props) => {
     setPriceTo("");
     setSelectedPriceRanges([]);
     setSortBy("popular");
+  };
+
+  const addToCart = (product) => {
+    dispatch({
+      type: "ADD_ITEM",
+      payload: {
+        ...product,
+        quantity: 1,
+        selected: false,
+      },
+    });
   };
 
   const filteredProducts = products.filter(filterProducts);
@@ -262,6 +275,7 @@ const Home = (props) => {
                   key={product.id}
                   product={product}
                   onClick={() => handleProductClick(product.id)}
+                  onAddToCart={addToCart}
                 />
               ))
             ) : (
